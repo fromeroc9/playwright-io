@@ -23,12 +23,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           registry-url: 'https://registry.npmjs.org/'
 
@@ -43,15 +43,28 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Bump version and create tag
+      - name: Bump version, Create PR and Publish
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          # Sube la versión en package.json y crea el tag de git automáticamente
+          # 1. Crear una nueva rama temporal
+          BRANCH_NAME="release/bump-${{ github.run_id }}"
+          git checkout -b $BRANCH_NAME
+
+          # 2. Subir la versión (crea el commit y el tag localmente)
           npm version ${{ github.event.inputs.version_bump }} -m "chore(release): %s"
-          git push origin HEAD
+
+          # 3. Subir la rama y el tag a GitHub
+          git push origin $BRANCH_NAME
           git push origin --tags
 
-      - name: Publish to NPM
-        run: npm publish
-        env:
-          # Requiere que configures el secreto NPM_TOKEN en los settings de tu repositorio en GitHub
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          # 4. Crear el Pull Request usando GitHub CLI
+          gh pr create \
+            --title "chore(release): Actualización de versión" \
+            --body "PR generado automáticamente por GitHub Actions para subir la versión." \
+            --base master \
+            --head $BRANCH_NAME
+
+          # 5. Publicar a NPM
+          npm publish
