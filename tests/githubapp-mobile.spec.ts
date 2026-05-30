@@ -13,7 +13,7 @@ import { test } from '../src';
 test('Github Android', { tag: '@temples1' }, async ({ page, driver }) => {
 
     await page.locator$('//android.widget.EditText[@resource-id="user_input"]').click();
-    await page.locator$('//android.widget.EditText[@resource-id="user_input"]').setValue("flavio-arc9");
+    await page.locator$('//android.widget.EditText[@resource-id="user_input"]').setValue("fromeroc9");
     await page.locator$('//android.view.View[@resource-id="search_button"]').click();
 
     await page.locator$('//android.widget.Button[@content-desc="Show Repositories"]').click();
@@ -23,7 +23,7 @@ test('Github Android', { tag: '@temples1' }, async ({ page, driver }) => {
     // await page.locator$$('//android.widget.EditText').length;
     // await page.locator$$('//android.widget.EditText')[0].clearValue();
     // await page.locator$$('//android.widget.EditText')[0].click();
-    // await page.locator$$('//android.widget.EditText')[0].setValue("flavio-arc9");
+    // await page.locator$$('//android.widget.EditText')[0].setValue("fromeroc9");
     // await page.locator$$('//android.widget.EditText')[0].getText();
 
     expect(repo_text).toBe(true);

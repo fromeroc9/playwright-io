@@ -103,7 +103,6 @@ export class Instance {
                 this.workerResult.failed++;
                 break;
             case 'skipped':
-                this.workerResult.finished++; 
                 break;
             case 'timedOut':
                 this.workerResult.failed++;

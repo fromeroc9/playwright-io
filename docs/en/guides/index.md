@@ -138,12 +138,12 @@ test('webview interaction', async () => {
 - **[📱 Prerrequisitos](../prerequisites/index.md)** - Configurar Appium y dispositivos
 
 ### **💡 Ejemplos Completos**
-- **[GitHub Examples](https://github.com/flavio-arc9/playwright-io-examples)** - Repositorio con ejemplos reales
-- **[Test Patterns](https://github.com/flavio-arc9/playwright-io-examples/tree/main/tests)** - Patrones de testing comunes
+- **[GitHub Examples](https://github.com/fromeroc9/playwright-io-examples)** - Repositorio con ejemplos reales
+- **[Test Patterns](https://github.com/fromeroc9/playwright-io-examples/tree/main/tests)** - Patrones de testing comunes
 
 ### **🆘 Soporte**
-- **[GitHub Issues](https://github.com/flavio-arc9/playwright-io/issues)** - Reportar bugs
-- **[Discussions](https://github.com/flavio-arc9/playwright-io/discussions)** - Preguntas y ayuda
+- **[GitHub Issues](https://github.com/fromeroc9/playwright-io/issues)** - Reportar bugs
+- **[Discussions](https://github.com/fromeroc9/playwright-io/discussions)** - Preguntas y ayuda
 - **[Changelog](../changelog)** - Novedades y cambios
 
 ---
@@ -158,4 +158,4 @@ Estamos trabajando en más guías detalladas:
 - 📱 **Device Farms** - BrowserStack, Sauce Labs, AWS Device Farm
 - 🔍 **Debugging Techniques** - Logs, network monitoring, performance
 
-¿Tienes sugerencias para nuevas guías? [¡Compártelas con nosotros!](https://github.com/flavio-arc9/playwright-io/discussions) -->
+¿Tienes sugerencias para nuevas guías? [¡Compártelas con nosotros!](https://github.com/fromeroc9/playwright-io/discussions) -->

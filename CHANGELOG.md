@@ -133,10 +133,10 @@ y este proyecto se adhiere al [Versionado Semántico](https://semver.org/spec/v2
 
 ### 🤝 **Contribuciones**
 
-¿Quieres contribuir? ¡Excelente! Consulta nuestras [guías de contribución](https://github.com/flavio-arc9/playwright-io/blob/main/CONTRIBUTING.md) para comenzar.
+¿Quieres contribuir? ¡Excelente! Consulta nuestras [guías de contribución](https://github.com/fromeroc9/playwright-io/blob/main/CONTRIBUTING.md) para comenzar.
 
 ### 📞 **Soporte**
 
-- 🐛 **Issues**: [GitHub Issues](https://github.com/flavio-arc9/playwright-io/issues)
-- 📖 **Documentación**: [GitHub Pages](https://flavio-arc9.github.io/playwright-io)
-- 💬 **Discusiones**: [GitHub Discussions](https://github.com/flavio-arc9/playwright-io/discussions)
+- 🐛 **Issues**: [GitHub Issues](https://github.com/fromeroc9/playwright-io/issues)
+- 📖 **Documentación**: [GitHub Pages](https://fromeroc9.github.io/playwright-io)
+- 💬 **Discusiones**: [GitHub Discussions](https://github.com/fromeroc9/playwright-io/discussions)

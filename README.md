@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://flavio-arc9.github.io/playwright-io">
+  <a href="https://fromeroc9.github.io/playwright-io">
     <img width="128" alt="playwright-io" src="./docs/logo.svg">
   </a>
 </div>
@@ -11,8 +11,8 @@
 [![npm version](https://img.shields.io/npm/v/playwright-io)](https://www.npmjs.com/package/playwright-io)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8.2-blue.svg)](https://www.typescriptlang.org/)
 [![npm downloads](https://img.shields.io/npm/dw/playwright-io)](https://www.npmjs.com/package/playwright-io)
-[![GitHub issues](https://img.shields.io/github/issues/flavio-arc9/playwright-io)](https://github.com/flavio-arc9/playwright-io/issues)
-[![license](https://img.shields.io/npm/l/playwright-io)](https://github.com/flavio-arc9/playwright-io/blob/main/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/fromeroc9/playwright-io)](https://github.com/fromeroc9/playwright-io/issues)
+[![license](https://img.shields.io/npm/l/playwright-io)](https://github.com/fromeroc9/playwright-io/blob/main/LICENSE)
 
 </div>
 
@@ -122,12 +122,12 @@ Este proyecto está bajo la licencia [MIT](LICENSE).
 
 
 <p align="center">
-<a href="https://github.com/flavio-arc9/playwright-io">
+<a href="https://github.com/fromeroc9/playwright-io">
 <img src="http://randojs.com/images/barsSmall.gif" alt="Animated footer bars" width="100%"/></a>
 </p>
 <br/>
 <p align="center">
-<a href="https://github.com/flavio-arc9/playwright-io">
+<a href="https://github.com/fromeroc9/playwright-io">
 <img src="http://randojs.com/images/backToTopButton.png" alt="Back to top" height="29"/>
 </a>
 </p>

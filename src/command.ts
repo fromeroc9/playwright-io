@@ -108,7 +108,7 @@ export class Command {
      */
     private isElementMethod(methodName: string) {
         return Command.ELEMENT_METHODS.some(method =>
-            method.ref.includes(methodName)
+            methodName === method.ref || methodName.endsWith(method.ref)
         );
     }
 
@@ -118,9 +118,11 @@ export class Command {
      * @returns The element method configuration or undefined if not found.
      */
     private findElementMethod(methodName: string) {
-        return Command.ELEMENT_METHODS.find(method =>
-            method.ref.includes(methodName)
-        );
+        return [...Command.ELEMENT_METHODS]
+            .sort((a, b) => b.ref.length - a.ref.length)
+            .find(method =>
+                methodName === method.ref || methodName.endsWith(method.ref)
+            );
     }
 
     /**
