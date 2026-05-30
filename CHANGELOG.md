@@ -7,6 +7,19 @@ y este proyecto se adhiere al [Versionado Semántico](https://semver.org/spec/v2
 
 ---
 
+## [1.0.4] - 2026-05-30 🚀
+
+### ✨ **Nuevas Características**
+- **🤖 GitHub Actions**: Agregado flujo de trabajo automatizado para generar releases y publicar el paquete en NPM.
+
+### 🔧 **Mejorado**
+- **📦 Dependencias y URLs**: Migración de URLs del repositorio y actualización de dependencias internas (`@wdio/utils`, `glob`).
+
+### 🐛 **Corregido**
+- **📊 Estado de Tests**: Corrección en el rastreo del estado de los tests, evitando el doble conteo de aquellos que eran marcados como `skipped`.
+- **🔗 Resolución de Métodos WebdriverIO**: Se arregló la lógica del proxy para identificar y registrar correctamente comandos de elementos personalizados en Playwright (como `custom$`, `react$$`).
+
+---
 ## [1.0.3] - 2025-10-18 🚀
 
 ### ✨ **Nuevas Características**

@@ -1,0 +1,57 @@
+name: Release and Publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_bump:
+        description: 'Tipo de actualización de versión (patch, minor, major)'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          registry-url: 'https://registry.npmjs.org/'
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Bump version and create tag
+        run: |
+          # Sube la versión en package.json y crea el tag de git automáticamente
+          npm version ${{ github.event.inputs.version_bump }} -m "chore(release): %s"
+          git push origin HEAD
+          git push origin --tags
+
+      - name: Publish to NPM
+        run: npm publish
+        env:
+          # Requiere que configures el secreto NPM_TOKEN en los settings de tu repositorio en GitHub
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
