@@ -32,82 +32,24 @@ const _test = base.extend<TestArgs & HiddenTestArgs, WorkerArgs>({
     ],
     /**
      * Merges project and test-specific service configurations.
-     * This allows for dynamic configuration based on the test environment.
-     * @returns The merged services array.
      */
-    services: [
-        async ({ _useDefaultArray }, use, testInfo) => {
-            const projectServices = (testInfo.project.use as TestOptions).services || [];
-            const mergedServices = [...projectServices, ..._useDefaultArray];
-            await use(mergedServices);
-        },
-        { scope: 'test' }
-    ],
+    services: [[], { option: true }],
     /**
      * Merges project and test-specific WebDriverIO configuration settings.
-     * This allows for dynamic configuration based on the test environment.
-     * @returns The merged configuration object.
      */
-    config: [
-        async ({ _useDefaultObject }, use, testInfo) => {
-            const merge = {
-                ...(testInfo.project.use as TestOptions).config,
-                ..._useDefaultObject,
-            };
-            await use(merge);
-        },
-        { scope: 'test' },
-    ],
+    config: [{}, { option: true }],
     /**
      * Merges project and test-specific browser/device capabilities.
-     * This allows for dynamic capabilities based on the test environment.
-     * @returns The merged capabilities object.
      */
-    capabilities: [
-        async ({ _useDefaultObject }, use, testInfo) => {
-            const merge = {
-                ...(testInfo.project.use as TestOptions).capabilities,
-                ..._useDefaultObject,
-            }
-            await use(merge);
-        },
-        { scope: 'test' }
-    ],
+    capabilities: [{}, { option: true }],
     /**
      * Merges the provided screenshot options with the project-specific screenshot options.
-     * This allows for dynamic screenshot behavior based on the test environment.
-     * @returns The merged screenshot options object.
      */
-    takeScreenshot: [
-        async ({ _useDefaultBoolean }, use, testInfo) => {
-            const takeScreenshot = (testInfo.project.use as TestOptions).takeScreenshot;
-            const value = takeScreenshot === undefined ? _useDefaultBoolean : takeScreenshot;
-            await use(value);
-        },
-        { scope: 'test' }
-    ],
+    takeScreenshot: [false, { option: true }],
     /**
      * Merges the provided recording options with the project-specific recording options.
-     * This allows for dynamic recording behavior based on the test environment.
-     * @returns The merged recording options object.
      */
-    recordingScreen: [
-        async ({ _useDefaultBoolean }, use, testInfo) => {
-            const projectRecordingScreen = (testInfo.project.use as TestOptions).recordingScreen;
-
-            let finalValue: boolean | any = _useDefaultBoolean;
-            if (projectRecordingScreen !== undefined && projectRecordingScreen !== null) {
-                if (typeof projectRecordingScreen === 'boolean') {
-                    finalValue = projectRecordingScreen;
-                } else if (typeof projectRecordingScreen === 'object') {
-                    finalValue = projectRecordingScreen;
-                }
-            }
-
-            await use(finalValue);
-        },
-        { scope: 'test' }
-    ],
+    recordingScreen: [false as boolean | any, { option: true }],
     /**
      * Creates and manages WebDriverIO session with integrated service hooks.
      * Handles initialization, test execution, cleanup, and global driver access.
