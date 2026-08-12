@@ -58,7 +58,7 @@ Create projects according to the device you'll be testing:
             platformName: 'iOS',
             "appium:automationName": "XCUITest",
             "appium:udid": "<REPLACE_HERE>",
-            "appium:bundleId": "org.reactjs.native.example.wdiodemoapp"
+            "appium:bundleId": "org.wdiodemoapp"
         }
     }
 }

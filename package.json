@@ -37,15 +37,15 @@
 		"test": "playwright test"
 	},
 	"devDependencies": {
-		"@types/node": "^22.10.7",
-		"typescript": "~5.8.2"
+		"@types/node": "^26.2.0",
+		"typescript": "~7.0.2"
 	},
 	"peerDependencies": {
 		"@playwright/test": "latest"
 	},
 	"dependencies": {
 		"@ffmpeg-installer/ffmpeg": "^1.1.0",
-		"@wdio/utils": "^9.27.2",
+		"@wdio/utils": "^9.30.1",
 		"glob": "^13.0.6",
 		"webdriverio": "latest"
 	}

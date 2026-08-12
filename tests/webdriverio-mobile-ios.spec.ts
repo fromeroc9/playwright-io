@@ -5,8 +5,8 @@ test.use({
     capabilities: {
         platformName: 'IOS',
         "appium:automationName": "XCUITest",
-        "appium:bundleId": "org.reactjs.native.example.wdiodemoapp",
-        "appium:udid": "CED003A3-85B7-4780-B42E-EA5BF16DB5BB",
+        "appium:bundleId": "org.wdiodemoapp",
+        "appium:udid": "F107A69F-F050-419A-94D7-48E59F5FAEEA",
     }
 });
 
@@ -37,6 +37,8 @@ test('WebdriverIO IOS', async ({ page, driver }) => {
         timeout: 11000,
         reverse: !true,
     });
+
+    await driver.pause(10000);
 
     const text = await alert_title.getText();
     expect(text).toContain('Success');

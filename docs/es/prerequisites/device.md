@@ -74,7 +74,7 @@ xcrun simctl listapps booted | grep -i "nombre_app"
 # se obtendrá el valor de CFBundleIdentifier
 
 # Información detallada de una app específica
-xcrun simctl appinfo booted org.reactjs.native.example.wdiodemoapp
+xcrun simctl appinfo booted org.wdiodemoapp
 ```
 
 **Para Dispositivos Físicos:**
@@ -98,6 +98,6 @@ unzip -l mi_app.ipa | grep Info.plist
 unzip -j mi_app.ipa "Payload/*/Info.plist"
 plutil -p Info.plist | grep CFBundleIdentifier
 
-# El resultado muestra: "CFBundleIdentifier" => "org.reactjs.native.example.wdiodemoapp"
-# bundleId = org.reactjs.native.example.wdiodemoapp
+# El resultado muestra: "CFBundleIdentifier" => "org.wdiodemoapp"
+# bundleId = org.wdiodemoapp
 ```

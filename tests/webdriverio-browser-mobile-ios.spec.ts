@@ -11,7 +11,7 @@ test.use({
         platformName: 'IOS',
         "appium:browserName": "Safari",
         "appium:automationName": "XCUITest",
-        "appium:udid": "CED003A3-85B7-4780-B42E-EA5BF16DB5BB"
+        "appium:udid": "F107A69F-F050-419A-94D7-48E59F5FAEEA"
     }
 });
 

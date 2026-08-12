@@ -33,8 +33,8 @@ export default defineConfig<TestOptions>({
                 //     platformName: 'IOS',
                 //     "appium:deviceName": "iPhone 16e Device 1",
                 //     "appium:automationName": "XCUITest",
-                //     "appium:bundleId": "org.reactjs.native.example.wdiodemoapp",
-                //     "appium:udid": "CED003A3-85B7-4780-B42E-EA5BF16DB5BB",
+                //     "appium:bundleId": "org.wdiodemoapp",
+                //     "appium:udid": "F107A69F-F050-419A-94D7-48E59F5FAEEA",
                 // }
                 // CONFIGURACIÓN CORREGIDA PARA APP AUTOMATE
                 config: {
@@ -63,66 +63,66 @@ export default defineConfig<TestOptions>({
                         // buildIdentifier: 'Identifier-1.1',
                     }]
                 ]
-}
+            }
         },
-    {
-        name: 'Playwright Desktop Chrome',
-        use: {
-            ...devices['Desktop Chrome']
-        }
-    },
-    {
-        name: 'appium',
-    },
-    {
-        name: 'WebdriverIO Android 1',
-        use: {
-            capabilities: {
-                platformName: 'Android',
-                "appium:deviceName": "Emulador 5554",
-                "appium:automationName": "UiAutomator2",
-                "appium:appPackage": "com.wdiodemoapp",
-                "appium:appActivity": ".MainActivity",
-                "appium:udid": "emulator-5554"
-            },
-        }
-    },
-    {
-        name: 'WebdriverIO Android 2',
-        use: {
-            capabilities: {
-                platformName: 'Android',
-                "appium:deviceName": "Xiaomi 15Pro",
-                "appium:automationName": "UiAutomator2",
-                "appium:appPackage": "com.wdiodemoapp",
-                "appium:appActivity": ".MainActivity",
-                "appium:udid": "QCD645HEEU5X5LLZ"
-            },
-        }
-    },
-    {
-        name: 'WebdriverIO IOS 1',
-        use: {
-            capabilities: {
-                platformName: 'IOS',
-                "appium:deviceName": "iPhone 16e Device 1",
-                "appium:automationName": "XCUITest",
-                "appium:bundleId": "org.reactjs.native.example.wdiodemoapp",
-                "appium:udid": "CED003A3-85B7-4780-B42E-EA5BF16DB5BB",
+        {
+            name: 'Playwright Desktop Chrome',
+            use: {
+                ...devices['Desktop Chrome']
+            }
+        },
+        {
+            name: 'appium',
+        },
+        {
+            name: 'WebdriverIO Android 1',
+            use: {
+                capabilities: {
+                    platformName: 'Android',
+                    "appium:deviceName": "Emulador 5554",
+                    "appium:automationName": "UiAutomator2",
+                    "appium:appPackage": "com.wdiodemoapp",
+                    "appium:appActivity": ".MainActivity",
+                    "appium:udid": "emulator-5554"
+                },
+            }
+        },
+        {
+            name: 'WebdriverIO Android 2',
+            use: {
+                capabilities: {
+                    platformName: 'Android',
+                    "appium:deviceName": "Xiaomi 15Pro",
+                    "appium:automationName": "UiAutomator2",
+                    "appium:appPackage": "com.wdiodemoapp",
+                    "appium:appActivity": ".MainActivity",
+                    "appium:udid": "QCD645HEEU5X5LLZ"
+                },
+            }
+        },
+        {
+            name: 'WebdriverIO IOS 1',
+            use: {
+                capabilities: {
+                    platformName: 'IOS',
+                    // "appium:deviceName": "iPhone 16e Device 1",
+                    "appium:automationName": "XCUITest",
+                    "appium:bundleId": "org.wdiodemoapp",
+                    "appium:udid": "F107A69F-F050-419A-94D7-48E59F5FAEEA",
+                }
+            }
+        },
+        {
+            name: 'WebdriverIO IOS 2',
+            use: {
+                capabilities: {
+                    platformName: 'IOS',
+                    "appium:deviceName": "iPhone 16 Device 2",
+                    "appium:automationName": "XCUITest",
+                    "appium:bundleId": "org.wdiodemoapp",
+                    "appium:udid": "F3DF6CB0-AA6F-4DE2-9ED9-1FFE91F64AA0",
+                }
             }
         }
-    },
-    {
-        name: 'WebdriverIO IOS 2',
-        use: {
-            capabilities: {
-                platformName: 'IOS',
-                "appium:deviceName": "iPhone 16 Device 2",
-                "appium:automationName": "XCUITest",
-                "appium:bundleId": "org.reactjs.native.example.wdiodemoapp",
-                "appium:udid": "F3DF6CB0-AA6F-4DE2-9ED9-1FFE91F64AA0",
-            }
-        }
-    }
     ]
 })
