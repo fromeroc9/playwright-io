@@ -22,9 +22,7 @@
 			"playwright",
 		]
 	},
-	"include": [
-		"src/**/*"
-	], // Incluye todos los archivos JS y TS en la carpeta src
+	"include": ["src/**/*"], // Incluye todos los archivos JS y TS en la carpeta src
 	"exclude": [
 		"node_modules",
 		"**/node_modules/*",

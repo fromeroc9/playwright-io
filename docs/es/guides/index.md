@@ -56,7 +56,7 @@ Configura grabación automática y capturas para debugging efectivo.
 
 ```typescript
 use: {
-  recordingScreen: {
+  takeVideo: {
     videoType: 'mp4',
     quality: 'medium'
   },

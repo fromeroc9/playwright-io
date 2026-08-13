@@ -13,6 +13,8 @@ export class Command {
 
     private static readonly EXCLUDED_PROMISE_METHODS = ['then', 'catch'] as const;
 
+    public onLog?: (msg: string, level: 'info' | 'warn' | 'error') => void;
+
     /**
      * Serializes method arguments into a readable string format for logging.
      * @param args The method arguments to serialize.
@@ -65,6 +67,9 @@ export class Command {
                         const formattedArgs = this.serializeMethodArguments(args);
                         const stepTitle = this.createStepTitle(methodName, formattedArgs);
 
+                        if (this.onLog) {
+                            this.onLog(stepTitle, 'info');
+                        }
                         test.step(stepTitle, () => { }, { box: true });
 
                         if (this.isElementMethod(methodName)) {
@@ -145,6 +150,10 @@ export class Command {
 
                             const formattedArgs = this.serializeMethodArguments(args);
                             const stepTitle = this.createElementStepTitle(elementMethod, methodName, formattedArgs);
+
+                            if (this.onLog) {
+                                this.onLog(stepTitle, 'info');
+                            }
                             test.step(stepTitle, () => { }, { box: true });
                         }
                         return value.apply(target, args);

@@ -69,7 +69,9 @@ use: {
 
 > **⚠️ Importante:** Para dispositivos móviles, el `screenshot` de Playwright debe estar desactivado (`'off'`) o no declararse.
 
-### recordingScreen
+### takeVideo
+
+> **⚠️ Nota de Deprecación:** `recordingScreen` ha sido deprecado en favor de `takeVideo` para alinearse con las capacidades nativas de Playwright. Por favor, actualiza tu configuración.
 
 - **Tipo:** `boolean | RecorderOptions`
 - **Predeterminado:** `false`
@@ -78,10 +80,10 @@ use: {
 ```ts
 use: {
     // Configuración booleana simple
-    recordingScreen: true,
+    takeVideo: true,
     
     // Configuración con opciones
-    recordingScreen: {
+    takeVideo: {
         videoType: 'mp4',
         quality: 'medium', 
         maxDuration: 300

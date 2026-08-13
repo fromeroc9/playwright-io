@@ -100,7 +100,6 @@ export class Session {
 
         if (!this.isBrowserStack()) {
             this.config.port = this.config.port || Session.DEFAULT_APPIUM_PORT;
-            return;
         }
 
         if (helpers.isTraceEnabled()) {
@@ -148,7 +147,7 @@ export class Session {
             this.driver = await remote(this.config);
             global.driver = this.driver;
 
-            const recordingConfig = this.testInfo.recordingScreen;
+            const recordingConfig = this.testInfo.takeVideo ?? this.testInfo.recordingScreen;
             const isRecordingEnabled = recordingConfig === true || (typeof recordingConfig === 'object' && recordingConfig !== null);
 
             if (isRecordingEnabled) {
@@ -169,7 +168,7 @@ export class Session {
         await test.step("Finish PlaywrightIO", async () => {
             if (!this.driver) return;
 
-            const recordingConfig = this.testInfo.recordingScreen;
+            const recordingConfig = this.testInfo.takeVideo ?? this.testInfo.recordingScreen;
             const isRecordingEnabled = recordingConfig === true || (typeof recordingConfig === 'object' && recordingConfig !== null);
             const shouldTakeScreenshot = this.testInfo.takeScreenshot === true;
 

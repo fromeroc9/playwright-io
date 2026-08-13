@@ -1,7 +1,8 @@
 import { helpers } from "./helpers";
-import { NetworkInterceptor } from "./network";
 import { locators } from "./locators";
+import { NetworkInterceptor } from "./network";
 import { Context, Page, Locators, WaitForElementOptions } from ".";
+import { command } from "./command";
 
 /**
  * Manages browser pages and provides utilities for interacting with them.
@@ -17,7 +18,7 @@ export class Pages {
 
     private networkInterceptor: NetworkInterceptor;
 
-    constructor(private driver: Context, private page: Page) {
+    constructor(private driver: Context, private page: Page, private deviceRender?: string) {
         this.networkInterceptor = new NetworkInterceptor(driver, page);
     }
 
@@ -26,6 +27,10 @@ export class Pages {
      */
     async resolve() {
         this.networkInterceptor.startCapturing();
+
+        command.onLog = (msg, lvl) => {
+            this.logToViewer(msg, lvl).catch(() => {});
+        };
 
         if (helpers.isTraceEnabled()) {
             await this.setupPageContent();
@@ -48,11 +53,52 @@ export class Pages {
     }
 
     /**
+     * Sends a real-time log to the device viewer UI.
+     * @param message - The log message to display
+     * @param level - Log level ('info', 'warn', 'error')
+     */
+    async logToViewer(message: string, level: 'info' | 'warn' | 'error' = 'info') {
+        if (this.page && !this.page.isClosed()) {
+            try {
+                await this.page.evaluate(({ msg, lvl }) => {
+                    if (typeof (window as any).appendLog === 'function') {
+                        (window as any).appendLog(msg, lvl);
+                    }
+                }, { msg: message, lvl: level });
+            } catch (e) {
+                // Ignore errors if the page is closing
+            }
+        }
+    }
+
+    /**
      * Creates HTML content for mobile device viewer.
      * @return HTML string for device viewer
      */
     private devicesViewer() {
-        const mjpegServerPort = (this.driver.capabilities as any)?.mjpegServerPort;
+        const mjpegServerPort = (this.driver.capabilities as any)?.mjpegServerPort || '';
+
+        if (this.deviceRender) {
+            const capabilities = this.driver.capabilities || {};
+            let capHtml = '';
+            for (const [key, value] of Object.entries(capabilities)) {
+                const displayValue = typeof value === 'object' ? JSON.stringify(value, null, 1) : String(value);
+                let valClass = 'val-string';
+                if (value === true) valClass = 'val-true';
+                if (value === false) valClass = 'val-false';
+
+                capHtml += `
+                    <div class="cap-item">
+                        <span class="cap-key">${key}</span>
+                        <span class="cap-value ${valClass}">${displayValue}</span>
+                    </div>
+                `;
+            }
+
+            return this.deviceRender
+                .replace(/\{\{\s*CAPABILITIES\s*\}\}/g, capHtml)
+                .replace(/\{\{\s*PORT\s*\}\}/g, String(mjpegServerPort));
+        }
 
         return `
             <html style="height: 100%;">
@@ -61,7 +107,7 @@ export class Pages {
                 </head>
                 <body style="margin: 0px; height: 100%; background-color: rgb(14, 14, 14);">
                     <img style="display: block; -webkit-user-select: none; margin: auto; background-color: hsl(0, 0%, 25%); height: 100%;" 
-                         src="http://localhost:${mjpegServerPort}/">
+                         src="http://127.0.0.1:${mjpegServerPort}/">
                 </body>
             </html>
         `;

@@ -28,7 +28,7 @@ test('WebdriverIO IOS', async ({ page, driver }) => {
     }
 
     await btnLogin.scrollIntoView({
-        scrollableElement: await page.locator$('~Login-screen'),
+        scrollableElement: page.locator$('~Login-screen'),
     });
 
     await btnLogin.click();
@@ -37,8 +37,6 @@ test('WebdriverIO IOS', async ({ page, driver }) => {
         timeout: 11000,
         reverse: !true,
     });
-
-    await driver.pause(10000);
 
     const text = await alert_title.getText();
     expect(text).toContain('Success');

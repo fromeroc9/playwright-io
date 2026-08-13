@@ -4,7 +4,6 @@ import { Pages } from './pages';
 import { Session } from './session';
 import { Instance } from './instance';
 
-
 /**
  * Global WebDriverIO driver instance accessible throughout test execution.
  */
@@ -47,9 +46,18 @@ const _test = base.extend<TestArgs & HiddenTestArgs, WorkerArgs>({
      */
     takeScreenshot: [false, { option: true }],
     /**
+     * @deprecated
      * Merges the provided recording options with the project-specific recording options.
      */
     recordingScreen: [false as boolean | any, { option: true }],
+    /**
+     * Merges the provided recording options with the project-specific recording options.
+     */
+    takeVideo: [false as boolean | any, { option: true }],
+    /**
+     * Custom HTML template string for the device viewer in UI mode.
+     */
+    deviceViewer: [undefined as string | undefined, { option: true }],
     /**
      * Creates and manages WebDriverIO session with integrated service hooks.
      * Handles initialization, test execution, cleanup, and global driver access.
@@ -66,13 +74,13 @@ const _test = base.extend<TestArgs & HiddenTestArgs, WorkerArgs>({
      * @returns The created page instance
      */
     page: [
-        async ({ page, driver }, use) => {
+        async ({ page, driver, deviceViewer }, use) => {
             if (!driver) {
                 await use(page);
                 return;
             }
 
-            const pages = new Pages(driver, page);
+            const pages = new Pages(driver, page, deviceViewer);
             await pages.resolve();
             await use(pages.createExtends);
             await pages.reject();
@@ -91,7 +99,6 @@ const _test = base.extend<TestArgs & HiddenTestArgs, WorkerArgs>({
                 baseUrl: baseURL || config.baseUrl,
                 services: services
             };
-            console.log(testInfo.project.use)
             const session = Session.isValid(options, project);
             if (!session) {
                 await use(undefined);

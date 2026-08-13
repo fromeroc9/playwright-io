@@ -1,5 +1,6 @@
 import { defineConfig, devices } from "@playwright/test";
 import { TestOptions } from "./src";
+import { proViewer } from "./src"
 
 export default defineConfig<TestOptions>({
     testDir: './tests',
@@ -14,14 +15,16 @@ export default defineConfig<TestOptions>({
     workers: 1,
     fullyParallel: true,
     use: {
-        trace: 'off',
+        trace: 'on',
         screenshot: 'off',
         video: 'off',
         takeScreenshot: false,
-        recordingScreen: false,
+        takeVideo: false,
+        deviceViewer: proViewer.toString(),
         config: {
             logLevel: 'info'
         },
+        headless: false,
         // capabilities: {},
         // services: []
     },

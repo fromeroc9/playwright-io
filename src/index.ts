@@ -2,6 +2,7 @@ import { Context } from './types/TestArgs';
 
 export * from './types';
 export * from './fixture';
+export * from './viewers';
 
 declare global {
     /**
@@ -20,4 +21,4 @@ declare global {
     var driver: Context;
 }
 
-export {};
+export { };

@@ -33,7 +33,7 @@ export default defineConfig<TestOptions>({
 		capabilities: { /* ... */ },
 		
 		// ✅ Nuevas opciones (opcionales)
-		recordingScreen: true,
+		takeVideo: true,
 		takeScreenshot: true
 	}
 });

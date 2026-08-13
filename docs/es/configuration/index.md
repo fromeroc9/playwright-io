@@ -17,7 +17,7 @@ export default defineConfig<TestOptions>({
         capabilities: { /* ... */ },
         config: { /* ... */ },
         takeScreenshot: true,
-        recordingScreen: false
+        takeVideo: false
     }
 });
 ```
