@@ -7,6 +7,27 @@ y este proyecto se adhiere al [Versionado Semántico](https://semver.org/spec/v2
 
 ---
 
+## [1.0.5] - 2026-08-12 🚀
+
+### ✨ **Nuevas Características**
+- **💻 Consola en Tiempo Real (Viewers)**: Se agregó un panel lateral de terminal a los *Device Viewers* que permite visualizar los logs de ejecución en vivo.
+- **🔌 Intercepción de Comandos UI**: Se conectó la clase \`Command\` con la inyección de UI en la clase \`Pages\`. Ahora todas las acciones nativas del *driver* de WebdriverIO (búsqueda de elementos, clicks, tecleo) que disparan un \`test.step\` también se transmiten en vivo a la consola del navegador.
+- **🎨 Múltiples Diseños de Viewers**: Nuevos y mejorados diseños para el renderizado de dispositivos:
+  - \`viewMobilePro\` (diseño avanzado y realista, con efecto neón y *Dynamic Island*).
+  - \`viewMinimalist\` (diseño *Enterprise* limpio y profesional).
+  - \`viewGlass\` (diseño Premium oscuro estilo *Glassmorphism*).
+
+### 🔧 **Mejorado**
+- **📐 Arquitectura UI 3-Columnas**: Se rediseñaron todos los *Viewers* (Minimalista, Glassmorphism y Pro) para usar una arquitectura simétrica de 3 columnas *(Capabilities - Dispositivo Centrado - Terminal)* garantizando una visualización correcta de la pantalla en dispositivos móviles y de escritorio sin cortes ni solapamientos.
+- **🧹 Limpieza de Archivos**: Se renombraron y organizaron los archivos de *viewers* (`mini.ts`, `glass.ts`) y sus variables de exportación para mantener consistencia semántica en la API.
+- **📚 Documentación**: Se agregó documentación bilingüe detallada (`docs/es` y `docs/en`) explicando cómo los usuarios pueden crear y exportar sus propios *Custom Device Viewers* inyectando las etiquetas `{{PORT}}` y `{{CAPABILITIES}}` requeridas.
+- **⚙️ Refactorización de Fixtures**: Se simplificaron las configuraciones de los *fixtures* reemplazando las funciones de combinación (*merger functions*) dinámicas por opciones estáticas.
+
+### ⚠️ **Deprecado**
+- La opción de configuración \`recordingScreen\` ha sido marcada como deprecada. En su lugar, se debe utilizar la nueva opción \`takeVideo\`.
+
+---
+
 ## [1.0.4] - 2026-05-30 🚀
 
 ### ✨ **Nuevas Características**

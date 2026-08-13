@@ -1,6 +1,6 @@
 import { defineConfig, devices } from "@playwright/test";
 import { TestOptions } from "./src";
-import { proViewer } from "./src"
+import { viewMobilePro } from "./src"
 
 export default defineConfig<TestOptions>({
     testDir: './tests',
@@ -20,7 +20,7 @@ export default defineConfig<TestOptions>({
         video: 'off',
         takeScreenshot: false,
         takeVideo: false,
-        deviceViewer: proViewer.toString(),
+        deviceViewer: viewMobilePro.toString(),
         config: {
             logLevel: 'info'
         },
